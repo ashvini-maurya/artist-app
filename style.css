@@ -1,0 +1,8 @@
+.artist {
+    padding: 20px;
+}
+
+.artist-form {
+    display: inline-flex;
+    width: 100%;
+}
