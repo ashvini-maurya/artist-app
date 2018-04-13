@@ -6,3 +6,13 @@
     display: inline-flex;
     width: 100%;
 }
+
+.album-photo {
+    float: left;
+    margin-right: 20px;
+}
+
+.album {
+    display: inline-flex;
+    margin-bottom: 20px;
+}
