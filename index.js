@@ -2,7 +2,7 @@ $("form").submit(function (e) {
 
   e.preventDefault();
   let artist = $("#search-artist").val();
-  let url = "www.theaudiodb.com/api/v1/json/1/search.php?s=" + artist;
+  let url = "http://www.theaudiodb.com/api/v1/json/1/search.php?s=" + artist;
 
   $.ajax({
     url: url,
@@ -38,7 +38,7 @@ function viewAlbums(artist_name) {
   return function () {
     $(".albums-result").show();
     
-    let artistsAlbumUrl = "www.theaudiodb.com/api/v1/json/1/searchalbum.php?s=" + artist_name;
+    let artistsAlbumUrl = "http://www.theaudiodb.com/api/v1/json/1/searchalbum.php?s=" + artist_name;
 
     $.ajax({
       url: artistsAlbumUrl,
