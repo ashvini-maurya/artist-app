@@ -12,6 +12,7 @@ $("form").submit(function (e) {
       if (data.artists == null) {
         alert("Artist not found");
         location.reload();
+        $(".artist-form").children('input').val('');
       }
       else {
         let artist_name = data.artists[0]["strArtist"];
@@ -19,24 +20,12 @@ $("form").submit(function (e) {
 
         $(".artists-result").show();
 
-        // $(".artists-result").append(
-        //   "<div class='artist'>"+
-        //     "<img class='logo' style='width: 100px; height: 80px;' src=" +
-        //     artist_logo + ">"+
-        //     "<h6>" + artist_name + "</h6>"+
-        //     // "<a href='#' id='view-album'"
-        //     $("#view-album").on("click", viewAlbums(artist_name))+
-        //   "</div>"
-        // )
-
-
-
         $("#artist-logo").append("<img class='logo' src=" + artist_logo + " " + "style='width: 100px; height: 80px;'" + ">");
 
         $(".artist-name").append(artist_name);
         $("#view-album").show();
-
         $("#view-album").on("click", viewAlbums(artist_name));
+        $(".artist-form").children('input').val('')
       }
     },
     error: function (error) {
@@ -48,7 +37,6 @@ $("form").submit(function (e) {
 function viewAlbums(artist_name) {
   return function () {
     $(".albums-result").show();
-    // console.log(artist_name);
     
     let artistsAlbumUrl = "http://www.theaudiodb.com/api/v1/json/1/searchalbum.php?s=" + artist_name;
 
@@ -57,10 +45,7 @@ function viewAlbums(artist_name) {
       type: "GET",
       dataType: "json",
       success: function(data) {
-        // console.log(data["album"]);
-        for (let album of data["album"]) {
-          // console.log(album);
-          
+        for (let album of data["album"]) {          
           $(".albums-result").append(
             "<div class='album'>" +
               "<img class='album-photo' style='width: 100px; height: 80px;' src=" +         album.strAlbumThumb + ">"+
